@@ -38,6 +38,8 @@ const setStep = (event) => {
       el.className += ' ' + ANIMATION_CLASS;
     });
 
+
+    // todo: after that you created your modal window, just delete setTimeout
     setTimeout(() => {
       if (winner) {
         alert(`${winner} is winner\nSteps: ${stepCounter}`);

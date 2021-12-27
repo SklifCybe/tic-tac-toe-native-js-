@@ -27,6 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   color: var(--main-text-color);
+  background-color: var(--main-bg-color);
 }
 
 .header {
@@ -57,9 +58,31 @@ body {
   cursor: pointer;
 }
 
+.main__section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--main-bg-color);
+}
+
+.main__table,
+.main__table > thead > tr > td,
+.main__table > tbody > tr > td {
+  border-collapse: collapse;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.main__table {
+  position: absolute;
+  right: 5rem;
+  height: 330px;
+  width: 185px;
+}
+
 .reset-button {
   opacity: 0;
-  margin-top: 1rem;
+  margin-top: 2rem;
   padding: 10px;
   border-radius: 30px;
   border: 0;
@@ -121,7 +144,9 @@ body {
 .footer {
   background-color: var(--second-bg-color);
   min-height: 3rem;
-  margin-top: auto;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   color: var(--second-text-color);
   display: flex;
   justify-content: center;
@@ -162,4 +187,25 @@ body {
 
 .footer__section > a:active {
   color: var(--second-text-color);
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    height: 1200px;
+  }
+  .main__section {
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .main__table {
+    margin: 2rem 0 2rem 0;
+    position: relative !important;
+    right: 0;
+  }
+  .reset-button-active {
+    margin-top: 0rem;
+    margin-bottom: 5rem;
+  }
 }
