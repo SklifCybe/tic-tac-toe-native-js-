@@ -1,5 +1,6 @@
-const BOARD = document.querySelector('.main__board');
 const CELLS = document.querySelectorAll('.cell');
+const WINNER_RESULT = Array.from(document.querySelectorAll('.winner'));
+const BOARD = document.querySelector('.main__board');
 const RESET_BTN = document.querySelector('.reset-button');
 
 const ANIMATION_CLASS = 'slow_cell';
@@ -21,6 +22,22 @@ const clearBoard = () => {
   stepCounter = 0;
 };
 
+const setWinnerInTable = (winner) => {
+  const emptyCell = WINNER_RESULT.find((node) => node.textContent === '-');
+
+  if (emptyCell) {
+    emptyCell.textContent = winner;
+  } else {
+    const chars = WINNER_RESULT.map((el) => el.textContent);
+    chars.unshift(winner);
+    chars.pop();
+
+    WINNER_RESULT.forEach((node, id) => {
+      node.textContent = chars[id];
+    });
+  }
+};
+
 const setStep = (event) => {
   const value = event.target.innerText;
   event.target.className += ' ' + ANIMATION_CLASS;
@@ -38,12 +55,13 @@ const setStep = (event) => {
       el.className += ' ' + ANIMATION_CLASS;
     });
 
-
     // todo: after that you created your modal window, just delete setTimeout
     setTimeout(() => {
       if (winner) {
+        setWinnerInTable(winner);
         alert(`${winner} is winner\nSteps: ${stepCounter}`);
       } else {
+        setWinnerInTable('DRAW');
         alert(`This is draw. Try again\nSteps: ${stepCounter}`);
       }
 
