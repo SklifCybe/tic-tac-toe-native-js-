@@ -18,6 +18,8 @@
   --board-height: var(--board-width);
   --cell-width: calc(var(--board-width) / 3);
   --cell-height: var(--cell-width);
+
+  --main-delay-loading: 2s;
 }
 
 body {
@@ -54,7 +56,7 @@ body {
   border-collapse: collapse;
   font-size: 80px;
   color: var(--board-color);
-  animation: slow 2s ease-in-out;
+  animation: slow-board var(--main-delay-loading) ease-in-out;
   cursor: pointer;
 }
 
@@ -69,7 +71,7 @@ body {
 .main__table > thead > tr > td,
 .main__table > tbody > tr > td {
   border-collapse: collapse;
-  border: 1px solid black;
+  border: var(--board-border-width) solid var(--second-board-color);
   text-align: center;
 }
 
@@ -78,6 +80,7 @@ body {
   right: 5rem;
   height: 330px;
   width: 185px;
+  animation: slow-table var(--main-delay-loading) ease-in-out;
 }
 
 .reset-button {
@@ -99,7 +102,7 @@ body {
   opacity: 1;
 }
 
-@keyframes slow {
+@keyframes slow-board {
   from {
     cursor: not-allowed;
     opacity: 0;
@@ -107,6 +110,15 @@ body {
   to {
     opacity: 1;
     cursor: pointer;
+  }
+}
+
+@keyframes slow-table {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
