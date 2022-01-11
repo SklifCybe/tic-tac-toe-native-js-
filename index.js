@@ -41,9 +41,9 @@ const setWinnerInTable = (winner) => {
 const setStep = (event) => {
   const value = event.target.innerText;
   event.target.className += ' ' + ANIMATION_CLASS;
-  stepCounter++;
 
   if (value === '') {
+    stepCounter++;
     event.target.innerText = step;
     step = toogleStep(step);
   }
